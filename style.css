@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&display=swap');
+
+
+*{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+}
+
+body{
+    background: #4CA1AF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #C4E0E5, #4CA1AF);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #C4E0E5, #4CA1AF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.search-input input{
+    border-radius: 20em;
+    width: 500px;
+    position: relative;
+}
+.search-input input[value]{
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+}
+.search-input button{
+    background-color: #4CA1AF;
+    border-radius: 20em;
+    position: relative;
+    right: 70px;
+}
+.search-input button:hover{
+    background-color: #36747d;
+    color: white;
+}
+
+.search-input{
+    width: 100%;
+    display: flex;
+    justify-content:center;
+}
+
+
+
+#todo{
+    height: 30rem;
+    text-align: center;
+    font-size: 25px;
+    border: 1px solid black;
+    overflow: hidden;
+}
+/* #todo p {
+    max-height: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+} */
+#doing{
+    text-align: center;
+    font-size: 25px;
+    height: 30rem;
+    border: 1px solid black;
+    overflow: hidden;
+}
+#done{
+    border: 1px solid black;
+    text-align: center;
+    font-size: 25px;
+    height: 30rem;
+    overflow: hidden;
+}
+
+
+
+
+/* @media (max-width : 1496px){
+    .search-input{
+        margin-left: 3em;
+    }
+} */
+
+/* @media (max-width : 575px){
+    .search-input{
+        margin-left: 4em;
+    }
+} */
+
+
+
