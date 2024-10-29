@@ -32,27 +32,51 @@ body {
 
 #txttodo{
     font-family: "Playwrite GB S", cursive;
+    font-weight: 600;
 }
 #txtdoing{
     font-family: "Playwrite GB S", cursive;
+    font-weight: 600;
 }
 #txtdone{
     font-family: "Playwrite GB S", cursive;
+    font-weight: 600;
 }
 
+#entredTask{
+  align-items: center;
+  gap: 20px;
+}
 
+/* #elementsTask span{
+  
+}
+#elementsTask div{
 
+} */
 
 
 
 @media (max-width : 1496px){
-    .search-input{
+    .Add-task-input{
         margin-left: 3em;
     }
 }
  
 @media (max-width : 575px){
-    .search-input{
+    .Add-task-input{
         margin-left: 4em;
     }
+}
+@media (max-width : 768px){
+  #container{
+    display: grid;
+    grid-template-columns: 2;
+  }
+}
+
+@media (max-width : 400px){
+  #inputs{
+    margin-left: 20px;
+  }
 }
