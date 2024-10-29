@@ -27,7 +27,13 @@ addButton.addEventListener("click" , function(){
         addElement.style.padding = "10px";
         addElement.style.marginBottom = "10px";
         
+
+        closeBtn.style.backgroundColor = "#D9D9D9";
+        closeBtn.style.color = "red";
+        closeBtn.style.padding = "5px";
+        closeBtn.style.borderRadius = "10px"
     
+        
         elementsTask.appendChild(addElement);
         elementsTask.appendChild(closeBtn);
     }

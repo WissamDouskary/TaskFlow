@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&family=Playwrite+GB+S&display=swap');
 
@@ -33,6 +34,7 @@ body {
 #txttodo{
     font-family: "Playwrite GB S", cursive;
     font-weight: 600;
+    
 }
 #txtdoing{
     font-family: "Playwrite GB S", cursive;
@@ -43,10 +45,12 @@ body {
     font-weight: 600;
 }
 
-#entredTask{
+
+
+/* #entredTask{
   align-items: center;
   gap: 20px;
-}
+} */
 
 /* #elementsTask span{
   
