@@ -18,50 +18,59 @@
 <section>
 
     <div id="inputs" class="">
-        <form class="grid grid-cols-4 gap-5 ml-5">
+        <form id="form" class="grid grid-cols-5 gap-5 ml-5">
 
-        <input type="text" class="h-12 px-5 rounded-2xl outline-0" placeholder="Enter Your Task Title">
-        <input id="input-date" type="date" class="h-12 px-5 rounded-2xl outline-0">
-        <input id="Add-task-input" type="text" class="h-12 px-5 rounded-2xl outline-0" placeholder="Enter Your Description">
-        <button id="addbtn" class="bg-blue-500 w-40 rounded-2xl hover:text-white hover:bg-blue-700 duration-300" type="button">To Do</button>
-    
+        <input id="task-title" type="text" class="h-12 px-5 rounded-2xl outline-0" placeholder="Enter Your Task Title" >
+        <input id="input-date" type="date" class="h-12 px-5 rounded-2xl outline-0" >
+        <input id="Add-disc" type="text" class="h-12 px-5 rounded-2xl outline-0" placeholder="Enter Your Description" >
+        
+        <!--Priorety options -->
+
+        <select id="pSelection" class="px-4 rounded-2xl outline-none">
+
+            <option id="no-selection" value="insert-selection">Select priorety</option>
+            <option id="op1" value="priorety 1">priorety 1</option>
+            <option id="op2" value="priorety 2">priorety 2</option>
+            <option id="op3" value="priorety 3">priorety 3</option>
+
+        </select>
+
+        <!-- todoButton -->
+        <button id="addbtn" type="submit" class="bg-blue-500 w-40 rounded-2xl hover:text-white hover:bg-blue-700 duration-300" type="button">To Do</button>
+            
         </form>
         </div>
     
     
     <div id="container" class="font- md:grid sm:grid-cols-3 grid grid-cols-1 gap-6 my-10 mr-4">
-        <div id="todo" class="ml-4 min-h-80 bg-white shadow-xl rounded-md">
+        <div id="todo" class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto">
             <h2 id="txttodo" class="mb-5 ml-4 mt-2">To Do</h2>
-            <span id="entredTask" class="">
-                <div id="elementsTask">
-                    <p></p>
+            <span id="entredTask">
+                <div id="elementsTask" class="rounded-md mb-4 ">
+                    
+                    <!-- <h2 class="pt-4 font-semibold">title1</h2>
+                    <p class="pt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt nisi odio facere accusantium perspiciatis rem id quo culpa ex possimus. Aperiam, minus! Deserunt nam, fugit ratione quam vero facilis esse?</p>
+                    <span class="flex justify-end gap-5">
+                    <span class="bg-green-500 p-3 rounded-md my-4 cursor-pointer">Edit</span>
+                    <span class="bg-red-500 p-3 rounded-md my-4 cursor-pointer">Delete</span>
+                    </span>
+                    <span>22-20-2000</span> -->
+                    
                 </div>
                 
             </span>
         </div>
-        <div id="doing" class="ml-4 min-h-80 bg-white shadow-xl rounded-md" >
+        <div id="doing" class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto" >
             <h2 id="txtdoing" class="mb-5 ml-4 mt-2">In Progress</h2>
             <p></p>
         </div>
-        <div id="done" class="ml-4 min-h-80 bg-white shadow-xl rounded-md" >
+        <div id="done" class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto" >
             <h3 id="txtdone" class="mb-5 ml-4 mt-2">Done</h3>
             
             
             
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
 </section>
 
 
