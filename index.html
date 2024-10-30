@@ -18,13 +18,20 @@
 <section>
 
     <div id="inputs" class="">
-        
+        <form class="grid grid-cols-4 gap-5 ml-5">
+
+        <input type="text" class="h-12 px-5 rounded-2xl outline-0" placeholder="Enter Your Task Title">
+        <input id="input-date" type="date" class="h-12 px-5 rounded-2xl outline-0">
+        <input id="Add-task-input" type="text" class="h-12 px-5 rounded-2xl outline-0" placeholder="Enter Your Description">
+        <button id="addbtn" class="bg-blue-500 w-40 rounded-2xl hover:text-white hover:bg-blue-700 duration-300" type="button">To Do</button>
+    
+        </form>
         </div>
     
     
-    <div id="container" class="font- md:grid sm:grid-cols-3 grid grid-cols-1 gap-8 my-10">
-        <div id="todo" class="ml-4">
-            <h2 id="txttodo" class=" text-center mb-5">To Do</h2>
+    <div id="container" class="font- md:grid sm:grid-cols-3 grid grid-cols-1 gap-6 my-10 mr-4">
+        <div id="todo" class="ml-4 min-h-80 bg-white shadow-xl rounded-md">
+            <h2 id="txttodo" class="mb-5 ml-4 mt-2">To Do</h2>
             <span id="entredTask" class="">
                 <div id="elementsTask">
                     <p></p>
@@ -32,12 +39,12 @@
                 
             </span>
         </div>
-        <div id="doing">
-            <h2 id="txtdoing" class="text-center mb-5">Doing</h2>
+        <div id="doing" class="ml-4 min-h-80 bg-white shadow-xl rounded-md" >
+            <h2 id="txtdoing" class="mb-5 ml-4 mt-2">In Progress</h2>
             <p></p>
         </div>
-        <div id="done" class="mr-4">
-            <h3 id="txtdone" class="text-center mb-5">Done</h3>
+        <div id="done" class="ml-4 min-h-80 bg-white shadow-xl rounded-md" >
+            <h3 id="txtdone" class="mb-5 ml-4 mt-2">Done</h3>
             
             
             
