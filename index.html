@@ -1,95 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <title>TaskFlow</title>
-</head>
-<body>
-
+  </head>
+  <body>
     <header>
-    <div class="flex justify-center items-center m-10">
-        <a href="index.html"><img width="150" src="/img/TaskFlow-removebg-preview.png" alt="LOGO"></a>
+      <div class="flex justify-center items-center m-10">
+        <a href="index.html"
+          ><img width="150" src="/img/TaskFlow-removebg-preview.png" alt="LOGO"
+        /></a>
         <!-- <a href="index.html"><p class="text-l font-bold hover:underline">ToDo List</p></a> -->
-    </div>
-</header>
-<section>
+      </div>
+    </header>
+    <section>
+      <div id="inputs" class="">
+        <form id="form" class="grid grid-cols-1 sm:grid-cols-6 gap-5 ml-5">
+          <input
+            id="task-title"
+            type="text"
+            class="h-12 px-5 rounded-2xl outline-0"
+            placeholder="Enter Your Task Title"
+          />
+          <input
+            id="input-date"
+            type="date"
+            class="h-12 px-5 rounded-2xl outline-0"
+          />
+          <input
+            id="Add-disc"
+            type="text"
+            class="h-12 px-5 rounded-2xl outline-0"
+            placeholder="Enter Your Description"
+          />
 
-    <div id="inputs" class="">
-        <form id="form" class=" grid grid-cols-1 sm:grid-cols-6 gap-5 ml-5">
+          <!--Priorety options -->
 
-        <input id="task-title" type="text" class="h-12 px-5 rounded-2xl outline-0" placeholder="Enter Your Task Title" >
-        <input id="input-date" type="date" class="h-12 px-5 rounded-2xl outline-0" >
-        <input id="Add-disc" type="text" class="h-12 px-5 rounded-2xl outline-0" placeholder="Enter Your Description" >
-        
-        <!--Priorety options -->
-
-        <select id="pSelection" class="px-4 rounded-2xl outline-none">
-
-            <option id="no-selection" value="insert-selection">Select priorety</option>
+          <select id="pSelection" class="px-4 rounded-2xl outline-none">
+            <option id="no-selection" value="insert-selection">
+              Select priorety
+            </option>
             <option id="op1" value="priorety 1">priorety 1</option>
             <option id="op2" value="priorety 2">priorety 2</option>
             <option id="op3" value="priorety 3">priorety 3</option>
+          </select>
 
-        </select>
-
-        <!-- <select id="status" class="px-4 rounded-2xl outline-none">
+          <!-- <select id="status" class="px-4 rounded-2xl outline-none">
             <option value="status">Status</option>
             <option value="todo">To Do</option>
             <option value="doing">In Progress</option>
             <option value="done">Done</option>
         </select> -->
 
-        <!-- todoButton -->
-        <button id="addbtn" type="submit" class="bg-blue-500 w-40 rounded-2xl hover:text-white hover:bg-blue-700 duration-300" type="button">To Do</button>
-            
+          <!-- todoButton -->
+          <button
+            id="addbtn"
+            type="submit"
+            class="bg-blue-500 w-40 rounded-2xl hover:text-white hover:bg-blue-700 duration-300"
+            type="button"
+          >
+            To Do
+          </button>
         </form>
-        </div>
-    
-    
-    <div id="container" class="font- md:grid sm:grid-cols-3 grid grid-cols-1 gap-6 my-10 mr-4">
-        <div id="todo" class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto">
-            <div class="flex justify-between mr-5 items-center">
+      </div>
+
+      <div
+        id="container"
+        class="font- md:grid sm:grid-cols-3 grid grid-cols-1 gap-6 my-10 mr-4"
+      >
+        <div
+          id="todo"
+          class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto"
+        >
+          <div class="flex justify-between mr-5 items-center">
             <h2 id="txttodo" class="mb-5 ml-4 mt-2">To Do</h2>
-            <P id="task-count"></P>
+            <p id="task-count"></p>
+          </div>
+          <span id="entredTask">
+            <div id="elementsTask" class="rounded-md mb-4">
+              
             </div>
-            <span id="entredTask">
-                <div id="elementsTask" class="rounded-md mb-4 ">
-                    
-                    <!-- <h2 class="pt-4 font-semibold">title1</h2>
-                    <p class="pt-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt nisi odio facere accusantium perspiciatis rem id quo culpa ex possimus. Aperiam, minus! Deserunt nam, fugit ratione quam vero facilis esse?</p>
-                    <span class="flex justify-end gap-5">
-                    <span class="bg-green-500 p-3 rounded-md my-4 cursor-pointer">Edit</span>
-                    <span class="bg-red-500 p-3 rounded-md my-4 cursor-pointer">Delete</span>
-                    </span>
-                    <span>22-20-2000</span> -->
-                    
-                </div>
-                
-            </span>
+          </span>
         </div>
-        <div id="doing" class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto" >
-            <h2 id="txtdoing" class="mb-5 ml-4 mt-2">In Progress</h2>
-            <p></p>
+        <div
+          id="doing"
+          class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto"
+        >
+          <h2 id="txtdoing" class="mb-5 ml-4 mt-2">In Progress</h2>
+          <p></p>
         </div>
-        <div id="done" class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto" >
-            <h3 id="txtdone" class="mb-5 ml-4 mt-2">Done</h3>
-            
-            
-            
+        <div
+          id="done"
+          class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto"
+        >
+          <h3 id="txtdone" class="mb-5 ml-4 mt-2">Done</h3>
         </div>
-    </div>
-</section>
-
-
-
-    
-
+      </div>
+    </section>
 
     <script src="script.js"></script>
-</body>
-
+  </body>
 </html>
