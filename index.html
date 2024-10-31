@@ -9,6 +9,7 @@
     <title>TaskFlow</title>
 </head>
 <body>
+
     <header>
     <div class="flex justify-center items-center m-10">
         <a href="index.html"><img width="150" src="/img/TaskFlow-removebg-preview.png" alt="LOGO"></a>
@@ -18,7 +19,7 @@
 <section>
 
     <div id="inputs" class="">
-        <form id="form" class="grid grid-cols-5 gap-5 ml-5">
+        <form id="form" class=" grid grid-cols-1 sm:grid-cols-6 gap-5 ml-5">
 
         <input id="task-title" type="text" class="h-12 px-5 rounded-2xl outline-0" placeholder="Enter Your Task Title" >
         <input id="input-date" type="date" class="h-12 px-5 rounded-2xl outline-0" >
@@ -35,6 +36,13 @@
 
         </select>
 
+        <!-- <select id="status" class="px-4 rounded-2xl outline-none">
+            <option value="status">Status</option>
+            <option value="todo">To Do</option>
+            <option value="doing">In Progress</option>
+            <option value="done">Done</option>
+        </select> -->
+
         <!-- todoButton -->
         <button id="addbtn" type="submit" class="bg-blue-500 w-40 rounded-2xl hover:text-white hover:bg-blue-700 duration-300" type="button">To Do</button>
             
@@ -44,7 +52,10 @@
     
     <div id="container" class="font- md:grid sm:grid-cols-3 grid grid-cols-1 gap-6 my-10 mr-4">
         <div id="todo" class="ml-4 h-96 bg-white shadow-2xl rounded-md overflow-auto">
+            <div class="flex justify-between mr-5 items-center">
             <h2 id="txttodo" class="mb-5 ml-4 mt-2">To Do</h2>
+            <P id="task-count"></P>
+            </div>
             <span id="entredTask">
                 <div id="elementsTask" class="rounded-md mb-4 ">
                     

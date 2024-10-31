@@ -10,6 +10,12 @@ let form = document.getElementById('form');
 
 let array = [];
 
+
+let countInput = document.getElementById("task-count")
+
+count = null;
+countInput.innerHTML = "0";
+
 form.addEventListener('submit', function(event){
     event.preventDefault();
 
@@ -32,23 +38,28 @@ function add_to_array(taskname, desc,date,pr){
         pr : pr.value,
     }
     array.push(task_object);
-
+    
     addTask(array);
+
+    count++;
+    countInput.innerHTML = count;
+
 }
 
 // add task 
 function addTask(array) {
     elementsTask.innerHTML = "";
-
+    
     array.forEach((task_object) => {
         let div = document.createElement("div");
 
         div.className = "task-item"; 
-        div.style.paddingTop = "16px"
-        div.style.paddingLeft = "16px"
-        div.style.paddingRight = "16px"
-        div.style.borderRadius = "6px"
-        div.style.marginBottom = "16px"
+        div.style.paddingTop = "16px";
+        div.style.paddingLeft = "16px";
+        div.style.paddingRight = "16px";
+        div.style.borderRadius = "6px";
+        div.style.marginBottom = "16px";
+       
 
         
 
@@ -71,10 +82,10 @@ function addTask(array) {
         let date = document.createElement("span");
         date.innerText = task_object.date;
 
-        date.style.paddingtop = "16px"
 
         let priority = document.createElement("span");
         priority.innerText = task_object.pr;
+        
         if(task_object.pr === "priorety 1") {
             div.style.backgroundColor = "red"
         }else if(task_object.pr === "priorety 2"){
@@ -88,6 +99,8 @@ function addTask(array) {
         let editButton = document.createElement("button");
         editButton.innerHTML = "Edit";
 
+        
+
         // style edit button
         editButton.style.backgroundColor = "rgb(34 197 94)";
         editButton.style.padding = "12px";
@@ -98,6 +111,26 @@ function addTask(array) {
         
         let deleteButton = document.createElement("button");
         deleteButton.innerText = "Delete";
+        
+        deleteButton.addEventListener('click', () => {
+            
+            const taskIndex = array.indexOf(task_object);
+            
+            
+            if (taskIndex > -1) {
+                array.splice(taskIndex, 1);
+            }
+        
+            
+            addTask(array);
+            count -= 1;
+            countInput.innerHTML = count;
+        });
+
+       
+        
+
+
 
         // style delete button 
         deleteButton.style.background = "rgb(239 68 68)"
@@ -112,6 +145,8 @@ function addTask(array) {
         buttonDiv.style.justifyContent = "flex-end"
         buttonDiv.style.gap= "20px"
 
+        
+
         buttonDiv.appendChild(editButton);
         buttonDiv.appendChild(deleteButton);
 
@@ -124,7 +159,6 @@ function addTask(array) {
         div.appendChild(date);
         div.appendChild(buttonDiv);
 
-        
         elementsTask.appendChild(div);
     });
 }
