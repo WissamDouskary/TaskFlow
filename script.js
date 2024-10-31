@@ -110,11 +110,12 @@ function addTask(array) {
       if (taskIndex > -1) {
         if (isConfirmed) {
           array.splice(taskIndex, 1);
+          count -= 1;
         }
       }
 
       addTask(array);
-      count -= 1;
+      
       countInput.innerHTML = count;
     });
 
