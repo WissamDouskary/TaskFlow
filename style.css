@@ -2,9 +2,8 @@
 @tailwind components;
 @tailwind utilities; */
 
-
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&family=Playwrite+GB+S&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz@0,14..32;1,14..32&family=Playwrite+GB+S&display=swap");
 
 * {
   font-family: "Inter", sans-serif;
@@ -12,17 +11,9 @@
 }
 
 body {
-  background: #4ca1af; 
-  background: -webkit-linear-gradient(
-    to right,
-    #c4e0e5,
-    #4ca1af
-  );
-  background: linear-gradient(
-    to right,
-    #c4e0e5,
-    #4ca1af
-  );
+  background: #4ca1af;
+  background: -webkit-linear-gradient(to right, #c4e0e5, #4ca1af);
+  background: linear-gradient(to right, #c4e0e5, #4ca1af);
   margin: 0;
 }
 
@@ -30,22 +21,18 @@ body {
   background-color: #4ca1af;
 }
 
-
-#txttodo{
-    font-family: "Playwrite GB S", cursive;
-    font-weight: 600;
-    
+#txttodo {
+  font-family: "Playwrite GB S", cursive;
+  font-weight: 600;
 }
-#txtdoing{
-    font-family: "Playwrite GB S", cursive;
-    font-weight: 600;
+#txtdoing {
+  font-family: "Playwrite GB S", cursive;
+  font-weight: 600;
 }
-#txtdone{
-    font-family: "Playwrite GB S", cursive;
-    font-weight: 600;
+#txtdone {
+  font-family: "Playwrite GB S", cursive;
+  font-weight: 600;
 }
-
-
 
 /* #entredTask{
   align-items: center;
@@ -59,28 +46,26 @@ body {
 
 } */
 
-
-
-@media (max-width : 1496px){
-    .Add-task-input{
-        margin-left: 3em;
-    }
+@media (max-width: 1496px) {
+  .Add-task-input {
+    margin-left: 3em;
+  }
 }
- 
-@media (max-width : 575px){
-    .Add-task-input{
-        margin-left: 4em;
-    }
+
+@media (max-width: 575px) {
+  .Add-task-input {
+    margin-left: 4em;
+  }
 }
-@media (max-width : 768px){
-  #container{
+@media (max-width: 768px) {
+  #container {
     display: grid;
     grid-template-columns: 2;
   }
 }
 
-@media (max-width : 400px){
-  #inputs{
+@media (max-width: 400px) {
+  #inputs {
     margin-left: 20px;
   }
 }
