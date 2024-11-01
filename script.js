@@ -10,6 +10,8 @@ let dateInput = document.getElementById("input-date");
 let form = document.getElementById("form");
 let pregressInfos = document.getElementById("status");
 
+let saveChanges = document.getElementById("edit-btn");
+
 let array = [];
 
 
@@ -17,9 +19,9 @@ let array = [];
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-
+  
   if (
-    addDesc.value !== "" &&
+    addDesc.value !== "" && 
     taskTitle.value !== "" &&
     dateInput.value !== "" &&
     pSelection.value !== "insert-selection" &&
@@ -36,8 +38,10 @@ form.addEventListener("submit", function (event) {
   pregressInfos.value = "status";
 });
 
+var task_object;
+
 function add_to_array(taskname, desc, date, pr,stat) {
-  let task_object = {
+  task_object = {
     title: taskname.value,
     desc: desc.value,
     date: date.value,
@@ -45,10 +49,9 @@ function add_to_array(taskname, desc, date, pr,stat) {
     status : stat.value,
   };
   array.push(task_object);
-
   addTask(array);
-
 }
+
 
 // add task
 function addTask(array) {
@@ -80,6 +83,8 @@ function addTask(array) {
     let date = document.createElement("span");
     date.innerText = task_object.date;
 
+    
+
 
     let priority = document.createElement("span");
     priority.innerText = task_object.pr;
@@ -94,6 +99,8 @@ function addTask(array) {
 
 
     let editButton = document.createElement("button");
+    editButton.setAttribute("id","edit-btn")
+    editButton.setAttribute("onclick","show_model()")
     editButton.innerHTML = "Edit";
 
     // style edit button
@@ -112,7 +119,6 @@ function addTask(array) {
       const isConfirmed = confirm("Confirm Delete?");
       if (taskIndex > -1 && isConfirmed) {
         array.splice(taskIndex, 1);
-        
         addTask(array);
       }
       
@@ -147,4 +153,57 @@ function addTask(array) {
     }
   });
 }
+
+//edit part :
+
+function show_model() {
+
+
+  document.getElementById('modal').style.display = "flex";
+  const taskIndex = array.indexOf(task_object);
+
+  if (taskIndex > -1) {
+    document.getElementById("edit-task-title").value = array[taskIndex].title;
+    document.getElementById("edit-input-date").value = array[taskIndex].date;
+    document.getElementById("edit-desc").value = array[taskIndex].desc;
+    document.getElementById("edit-pSelection").value = array[taskIndex].pr;
+    document.getElementById("edit-status").value = array[taskIndex].status;  
+
+    
+  
+    
+
+  }
+
+    saveChanges.addEventListener("click", function (event) {
+    
+    event.preventDefault();
+    
+    
+    let editedTask = {
+      title: document.getElementById("edit-task-title").value,
+      desc: document.getElementById("edit-desc").value,
+      date: document.getElementById("edit-input-date").value,
+      pr: document.getElementById("edit-pSelection").value,
+      status: document.getElementById("edit-status").value,
+    };
+
+    array[taskIndex] = editedTask;
+    
+    
+
+    toggleModal();
+    addTask(array);
+   
+    
+  });
+  }
+
+
+
+
+function toggleModal(){
+document.getElementById('modal').style.display = "none"
+}
+
 
