@@ -14,6 +14,8 @@ let saveChanges = document.getElementById("edit-btn");
 
 let array = [];
 
+let currentEditingIndex = -1;
+
 
 
 
@@ -61,7 +63,7 @@ function addTask(array) {
   done.innerHTML = "";
 
 
-  array.forEach((task_object) => {
+  array.forEach((task_object, index) => {
     let div = document.createElement("div");
     div.className = "task-item";
     div.style.paddingTop = "16px";
@@ -90,11 +92,11 @@ function addTask(array) {
     priority.innerText = task_object.pr;
 
     if (task_object.pr === "priorety 1") {
-      div.style.backgroundColor = "red";
+      div.style.backgroundColor = "rgb(252 165 165)";
     } else if (task_object.pr === "priorety 2") {
-      div.style.backgroundColor = "yellow";
+      div.style.backgroundColor = "rgb(253 224 71)";
     } else if (task_object.pr === "priorety 3") {
-      div.style.backgroundColor = "green";
+      div.style.backgroundColor = "#81C784";
     }
 
 
@@ -102,6 +104,7 @@ function addTask(array) {
     editButton.setAttribute("id","edit-btn")
     editButton.setAttribute("onclick","show_model()")
     editButton.innerHTML = "Edit";
+    
 
     // style edit button
     editButton.style.backgroundColor = "rgb(34 197 94)";
@@ -110,15 +113,17 @@ function addTask(array) {
     editButton.style.margin = "16px 0";
     editButton.style.cursor = "pointer";
  
+    editButton.addEventListener("click", () => show_model(index));
 
     let deleteButton = document.createElement("button");
     deleteButton.innerText = "Delete";
 
     deleteButton.addEventListener("click", () => {
-      const taskIndex = array.indexOf(task_object);
+      
+    
       const isConfirmed = confirm("Confirm Delete?");
-      if (taskIndex > -1 && isConfirmed) {
-        array.splice(taskIndex, 1);
+      if (index > -1 && isConfirmed) {
+        array.splice(index, 1);
         addTask(array);
       }
       
@@ -133,6 +138,7 @@ function addTask(array) {
 
     let buttonDiv = document.createElement("span");
     buttonDiv.style.display = "flex";
+    
     buttonDiv.style.justifyContent = "flex-end";
     buttonDiv.style.gap = "20px";
     buttonDiv.appendChild(editButton);
@@ -156,26 +162,27 @@ function addTask(array) {
 
 //edit part :
 
-function show_model() {
+function show_model(index) {
 
-
+  currentEditingIndex = index; 
   document.getElementById('modal').style.display = "flex";
-  const taskIndex = array.indexOf(task_object);
-
-  if (taskIndex > -1) {
-    document.getElementById("edit-task-title").value = array[taskIndex].title;
-    document.getElementById("edit-input-date").value = array[taskIndex].date;
-    document.getElementById("edit-desc").value = array[taskIndex].desc;
-    document.getElementById("edit-pSelection").value = array[taskIndex].pr;
-    document.getElementById("edit-status").value = array[taskIndex].status;  
-
-    
   
-    
+  
+  
+
+  if (currentEditingIndex > -1) {
+
+    document.getElementById("edit-task-title").value = array[currentEditingIndex].title;
+    document.getElementById("edit-input-date").value = array[currentEditingIndex].date;
+    document.getElementById("edit-desc").value = array[currentEditingIndex].desc;
+    document.getElementById("edit-pSelection").value = array[currentEditingIndex].pr;
+    document.getElementById("edit-status").value = array[currentEditingIndex].status;
+
+    console.log(index);
 
   }
 
-    saveChanges.addEventListener("click", function (event) {
+    saveChanges.addEventListener("click", function(event) {
     
     event.preventDefault();
     
@@ -188,7 +195,7 @@ function show_model() {
       status: document.getElementById("edit-status").value,
     };
 
-    array[taskIndex] = editedTask;
+    array[currentEditingIndex] = editedTask;
     
     
 
