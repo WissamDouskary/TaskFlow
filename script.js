@@ -2,17 +2,18 @@ let addButton = document.getElementById("addbtn");
 let addDesc = document.getElementById("Add-disc");
 let Container = document.getElementById("entredTask");
 let elementsTask = document.getElementById("elementsTask");
+let doing = document.getElementById("elementsTask2");
+let done = document.getElementById("elementsTask3");
 let taskTitle = document.getElementById("task-title");
 let pSelection = document.getElementById("pSelection");
 let dateInput = document.getElementById("input-date");
 let form = document.getElementById("form");
+let pregressInfos = document.getElementById("status");
 
 let array = [];
 
-let countInput = document.getElementById("task-count");
 
-count = null;
-countInput.innerHTML = "0";
+
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
@@ -21,40 +22,44 @@ form.addEventListener("submit", function (event) {
     addDesc.value !== "" &&
     taskTitle.value !== "" &&
     dateInput.value !== "" &&
-    pSelection.value !== "insert-selection"
+    pSelection.value !== "insert-selection" &&
+    pregressInfos.value !== "status"
   ) {
-    add_to_array(taskTitle, addDesc, dateInput, pSelection);
+    add_to_array(taskTitle, addDesc, dateInput, pSelection, pregressInfos);
   } else {
     alert("please fill all of the fields !");
   }
   addDesc.value = "";
   taskTitle.value = "";
   dateInput.value = "";
-  pSelection.value = "";
+  pSelection.value = "insert-selection";
+  pregressInfos = "status";
 });
 
-function add_to_array(taskname, desc, date, pr) {
+function add_to_array(taskname, desc, date, pr,stat) {
   let task_object = {
     title: taskname.value,
     desc: desc.value,
     date: date.value,
     pr: pr.value,
+    status : stat.value,
   };
   array.push(task_object);
 
   addTask(array);
 
-  count++;
-  countInput.innerHTML = count;
 }
 
 // add task
 function addTask(array) {
+
   elementsTask.innerHTML = "";
+  doing.innerHTML = "";
+  done.innerHTML = "";
+
 
   array.forEach((task_object) => {
     let div = document.createElement("div");
-
     div.className = "task-item";
     div.style.paddingTop = "16px";
     div.style.paddingLeft = "16px";
@@ -64,10 +69,6 @@ function addTask(array) {
 
     let title = document.createElement("h3");
     title.innerText = task_object.title;
-
-    //title style
-
-    title.style.paddingtop = "16px";
     title.style.fontWeight = "600";
 
     let description = document.createElement("p");
@@ -78,6 +79,7 @@ function addTask(array) {
 
     let date = document.createElement("span");
     date.innerText = task_object.date;
+
 
     let priority = document.createElement("span");
     priority.innerText = task_object.pr;
@@ -90,6 +92,7 @@ function addTask(array) {
       div.style.backgroundColor = "green";
     }
 
+
     let editButton = document.createElement("button");
     editButton.innerHTML = "Edit";
 
@@ -99,24 +102,20 @@ function addTask(array) {
     editButton.style.borderRadius = "6px";
     editButton.style.margin = "16px 0";
     editButton.style.cursor = "pointer";
+ 
 
     let deleteButton = document.createElement("button");
     deleteButton.innerText = "Delete";
 
     deleteButton.addEventListener("click", () => {
       const taskIndex = array.indexOf(task_object);
-      const isConfirmed = confirm("delete confirme !");
-
-      if (taskIndex > -1) {
-        if (isConfirmed) {
-          array.splice(taskIndex, 1);
-          count -= 1;
-        }
+      const isConfirmed = confirm("Confirm Delete?");
+      if (taskIndex > -1 && isConfirmed) {
+        array.splice(taskIndex, 1);
+        
+        addTask(array);
       }
-
-      addTask(array);
       
-      countInput.innerHTML = count;
     });
 
     // style delete button
@@ -127,21 +126,25 @@ function addTask(array) {
     deleteButton.style.cursor = "pointer";
 
     let buttonDiv = document.createElement("span");
-
     buttonDiv.style.display = "flex";
     buttonDiv.style.justifyContent = "flex-end";
     buttonDiv.style.gap = "20px";
-
     buttonDiv.appendChild(editButton);
     buttonDiv.appendChild(deleteButton);
-
-    div.appendChild(buttonDiv);
 
     div.appendChild(title);
     div.appendChild(description);
     div.appendChild(date);
     div.appendChild(buttonDiv);
 
-    elementsTask.appendChild(div);
+    
+    if (task_object.status === "todo") {
+      elementsTask.appendChild(div);
+    } else if (task_object.status === "doing") {
+      doing.appendChild(div);
+    } else if (task_object.status === "done") {
+      done.appendChild(div);
+    }
   });
 }
+
