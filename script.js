@@ -33,7 +33,7 @@ form.addEventListener("submit", function (event) {
   taskTitle.value = "";
   dateInput.value = "";
   pSelection.value = "insert-selection";
-  pregressInfos = "status";
+  pregressInfos.value = "status";
 });
 
 function add_to_array(taskname, desc, date, pr,stat) {
