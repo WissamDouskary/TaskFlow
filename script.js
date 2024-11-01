@@ -178,7 +178,7 @@ function show_model(index) {
     document.getElementById("edit-pSelection").value = array[currentEditingIndex].pr;
     document.getElementById("edit-status").value = array[currentEditingIndex].status;
 
-    console.log(index);
+    
 
   }
 
