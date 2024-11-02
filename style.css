@@ -11,9 +11,11 @@
 }
 
 body {
-  background: #4ca1af;
-  background: -webkit-linear-gradient(to right, #c4e0e5, #4ca1af);
-  background: linear-gradient(to right, #c4e0e5, #4ca1af);
+  background-image: url(img/cool-background.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 90vh;
   margin: 0;
 }
 
