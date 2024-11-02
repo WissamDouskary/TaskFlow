@@ -19,6 +19,9 @@ let currentEditingIndex = -1;
 
 
 
+
+
+
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   
@@ -62,6 +65,23 @@ function addTask(array) {
   doing.innerHTML = "";
   done.innerHTML = "";
 
+  
+
+
+
+  let todoCount =  array.filter(task_object => task_object.status === "todo").length;
+  let inProgressCount =  array.filter(task_object => task_object.status === "doing").length;
+  let doneCount =  array.filter(task_object => task_object.status === "done").length;
+
+  let todoTaskCount = document.getElementById("todo-count");
+  let doingTaskCount = document.getElementById("doing-count");
+  let doneTaskCount = document.getElementById("done-count");
+
+
+
+  
+
+  
 
   array.forEach((task_object, index) => {
     let div = document.createElement("div");
@@ -115,16 +135,30 @@ function addTask(array) {
  
     editButton.addEventListener("click", () => show_model(index));
 
+    //delete 
     let deleteButton = document.createElement("button");
     deleteButton.innerText = "Delete";
 
     deleteButton.addEventListener("click", () => {
       
-    
+      
+
       const isConfirmed = confirm("Confirm Delete?");
       if (index > -1 && isConfirmed) {
+        
         array.splice(index, 1);
+        
+        if(todoTaskCount.innerHTML === "1"){
+          todoTaskCount.innerHTML = "0";
+        } else if(doingTaskCount.innerHTML === "1"){
+          doingTaskCount.innerHTML = "0";
+        } else if(doneTaskCount.innerHTML === "1"){
+          doneTaskCount.innerHTML = "0";
+        }
+        
         addTask(array);
+
+        
       }
       
     });
@@ -151,12 +185,18 @@ function addTask(array) {
 
     
     if (task_object.status === "todo") {
+
       elementsTask.appendChild(div);
+      todoTaskCount.innerHTML = todoCount;
+
     } else if (task_object.status === "doing") {
       doing.appendChild(div);
+      doingTaskCount.innerHTML = inProgressCount;
     } else if (task_object.status === "done") {
       done.appendChild(div);
+      doneTaskCount.innerHTML = doneCount;
     }
+    
   });
 }
 
@@ -206,11 +246,10 @@ function show_model(index) {
   });
   }
 
-
+  
 
 
 function toggleModal(){
 document.getElementById('modal').style.display = "none"
 }
-
 
