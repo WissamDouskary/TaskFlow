@@ -15,9 +15,10 @@ body {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 90vh;
+  height: 100%;
   margin: 0;
 }
+
 
 #addbtn {
   background-color: #4ca1af;
@@ -26,6 +27,7 @@ body {
 #txttodo {
   font-family: "Playwrite GB S", cursive;
   font-weight: 600;
+  
 }
 #txtdoing {
   font-family: "Playwrite GB S", cursive;

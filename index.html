@@ -10,59 +10,79 @@
   </head>
   <body>
     <header>
-    <div class="flex justify-center items-center m-10">
+    <div class="flex justify-between items-center m-10 pb-24">
         <a href="index.html"><img width="150" src="img/TaskFlow-removebg-preview.png" alt="LOGO"></a>
         <!-- <a href="index.html"><p class="text-l font-bold hover:underline">ToDo List</p></a> -->
+        <label for="modal-toggle" class="bg-blue-500 w-36 p-3 text-center rounded-2xl hover:text-white hover:bg-blue-700 duration-300 h-15 cursor-pointer" 
+        onclick="document.getElementById('mainmodal').style.display = 'flex'"
+        >
+        Add Task
+      </label>
       </div>
     </header>
     <section>
       <div id="inputs" class="">
-        <form id="form" class="grid grid-cols-1 sm:grid-cols-6 gap-5 ml-5 mr-5">
-          <input
-            id="task-title"
-            type="text"
-            class="h-12 px-5 rounded-2xl outline-0"
-            placeholder="Enter Your Task Title"
-          />
-          <input
-            id="input-date"
-            type="date"
-            class="h-12 px-5 rounded-2xl outline-0"
-          />
-          
-          <input
-            id="Add-disc"
-            type="text"
-            class="h-12 px-5 rounded-2xl outline-0"
-            placeholder="Enter Your Description">
-          <!--Priorety options -->
 
-          <select id="pSelection" class="px-4 rounded-2xl outline-none h-12">
-            <option id="no-selection" value="insert-selection" disabled selcted>
-              Select priorety
-            </option>
-            <option id="op1" value="priorety 1" >priorety 1</option>
-            <option id="op2" value="priorety 2">priorety 2</option>
-            <option id="op3" value="priorety 3">priorety 3</option>
-          </select>
 
-          <select id="status" class="px-4 rounded-2xl outline-none h-12">
-            <option value="status" disabled selcted>Status</option>
-            <option value="todo">To Do</option>
-            <option value="doing">In Progress</option>
-            <option value="done">Done</option>
-        </select>
 
-          <!-- todoButton -->
-          <button
-            id="addbtn"
-            type="submit"
-            class="bg-blue-500 w-40 rounded-2xl hover:text-white hover:bg-blue-700 duration-300 h-12"
-            type="button"
-          >
-            To Do
-          </button>
-        </form>
+
+<!-- Modal Structure -->
+<div class="fixed inset-0 hidden items-center justify-center bg-black bg-opacity-50" id="mainmodal">
+  <div class="bg-white rounded-lg p-6 w-full max-w-md">
+    
+    <form id="form" class="grid grid-cols-1 gap-5">
+      <input
+        id="task-title"
+        type="text"
+        class="h-12 px-5 rounded-2xl border border-gray-300"
+        placeholder="Enter Your Task Title"
+      />
+      <input
+        id="input-date"
+        type="date"
+        class="h-12 px-5 rounded-2xl border border-gray-300"
+      />
+      <input
+        id="Add-disc"
+        type="text"
+        class="h-12 px-5 rounded-2xl border border-gray-300"
+        placeholder="Enter Your Description"
+      />
+
+      <select id="pSelection" class="px-4 rounded-2xl h-12 border border-gray-300">
+        <option value="" disabled selected>Select priorety</option>
+        <option value="priorety 1">Priorety 1</option>
+        <option value="priorety 2">Priorety 2</option>
+        <option value="priorety 3">Priorety 3</option>
+      </select>
+
+      <select id="status" class="px-4 rounded-2xl h-12 border border-gray-300">
+        <option value="" disabled selected>Status</option>
+        <option value="todo">To Do</option>
+        <option value="doing">In Progress</option>
+        <option value="done">Done</option>
+      </select>
+      <div class="flex justify-between mt-6">
+      <button
+        id="addbtn"
+        type="submit"
+        class="bg-blue-500 w-40 rounded-2xl hover:text-white hover:bg-blue-700 duration-300 h-12"
+        onclick="hideMainModel()"
+      >
+        Add Task
+      </button>
+      <button
+        id="Cancelbtn"
+        type="button"
+        class="w-40 rounded-2xl bg-gray-200 duration-300 h-12 hover:bg-gray-400 hover:text-white"
+        onclick="document.getElementById('mainmodal').style.display = 'none'"
+        >
+      Cancel
+      </button>
+    </div>
+    </form>
+  </div>
+</div>
       </div>
 
       <div
@@ -166,6 +186,30 @@
       </div>
   </div>
 
+  <footer class="pt-10 bg-[#5042c9] mt-40  rounded-t-2xl">
+    <div class="flex justify-around gap-56">
+
+    <a href="index.html"><img width="150" src="img/TaskFlow-removebg-preview.png" alt="LOGO"></a>
+    
+      <ul class="flex gap-12 items-center">
+      <li>
+        <a class="hover:underline" href="#">Home</a>
+      </li>
+      <li>
+        <a class="hover:underline" href="#">Privacy Policy</a>
+      </li>
+      <li>
+        <a class="hover:underline" href="#">Contact</a>
+      </li>
+      <li>
+        <a class="hover:underline" href="#">About</a>
+      </li>
+    </ul>
+    
+    </div>
+  <h2 class="text-center pt-20 pb-10">© 2023 TaskFlow™. All Rights Reserved.</h2>
+  </footer>
+
     <script src="script.js"></script>
-  </body>
+</body>
 </html>

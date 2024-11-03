@@ -22,6 +22,8 @@ let currentEditingIndex = -1;
 
 
 
+
+
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   
@@ -33,8 +35,11 @@ form.addEventListener("submit", function (event) {
     pregressInfos.value !== "status"
   ) {
     add_to_array(taskTitle, addDesc, dateInput, pSelection, pregressInfos);
+    
+    
   } else {
     alert("please fill all of the fields !");
+    showMainModel()
   }
   addDesc.value = "";
   taskTitle.value = "";
@@ -66,19 +71,17 @@ function addTask(array) {
   done.innerHTML = "";
 
   
-
-
-
   let todoCount =  array.filter(task_object => task_object.status === "todo").length;
   let inProgressCount =  array.filter(task_object => task_object.status === "doing").length;
   let doneCount =  array.filter(task_object => task_object.status === "done").length;
-
+  
   let todoTaskCount = document.getElementById("todo-count");
   let doingTaskCount = document.getElementById("doing-count");
   let doneTaskCount = document.getElementById("done-count");
 
-
-
+  todoTaskCount.innerHTML = todoCount;
+  doingTaskCount.innerHTML = inProgressCount;
+  doneTaskCount.innerHTML = doneCount;
   
 
   
@@ -108,8 +111,8 @@ function addTask(array) {
     
 
 
-    let priority = document.createElement("span");
-    priority.innerText = task_object.pr;
+    let priorety = document.createElement("span");
+    priorety.innerText = task_object.pr;
 
     if (task_object.pr === "priorety 1") {
       div.style.backgroundColor = "rgb(252 165 165)";
@@ -122,7 +125,7 @@ function addTask(array) {
 
     let editButton = document.createElement("button");
     editButton.setAttribute("id","edit-btn")
-    editButton.setAttribute("onclick","show_model()")
+    
     editButton.innerHTML = "Edit";
     
 
@@ -147,18 +150,8 @@ function addTask(array) {
       if (index > -1 && isConfirmed) {
         
         array.splice(index, 1);
-        
-        if(todoTaskCount.innerHTML === "1"){
-          todoTaskCount.innerHTML = "0";
-        } else if(doingTaskCount.innerHTML === "1"){
-          doingTaskCount.innerHTML = "0";
-        } else if(doneTaskCount.innerHTML === "1"){
-          doneTaskCount.innerHTML = "0";
-        }
-        
         addTask(array);
 
-        
       }
       
     });
@@ -200,9 +193,20 @@ function addTask(array) {
   });
 }
 
+// mainpopup
+
+function showMainModel(){
+  document.getElementById("mainmodal").style.display = "flex";
+}
+function hideMainModel(){
+  document.getElementById("mainmodal").style.display = "none";
+}
+
 //edit part :
 
 function show_model(index) {
+    
+  
 
   currentEditingIndex = index; 
   document.getElementById('modal').style.display = "flex";
@@ -218,13 +222,19 @@ function show_model(index) {
     document.getElementById("edit-pSelection").value = array[currentEditingIndex].pr;
     document.getElementById("edit-status").value = array[currentEditingIndex].status;
 
+
+    
     
 
   }
 
     saveChanges.addEventListener("click", function(event) {
-    
+
+      
+
+
     event.preventDefault();
+
     
     
     let editedTask = {
@@ -236,6 +246,9 @@ function show_model(index) {
     };
 
     array[currentEditingIndex] = editedTask;
+    
+
+    
     
     
 
