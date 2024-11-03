@@ -27,6 +27,15 @@ let succesModal = document.getElementById("succesModal");
 form.addEventListener("submit", function (event) {
   event.preventDefault();
   
+  const dateEntred = new Date(dateInput.value);
+  const nowDate = new Date();
+
+  if (dateEntred < nowDate) {
+    alert("Please enter a valid date");
+    showMainModel();
+    return; 
+  }
+
   if (
     addDesc.value !== "" && 
     taskTitle.value !== "" &&
@@ -37,9 +46,10 @@ form.addEventListener("submit", function (event) {
     add_to_array(taskTitle, addDesc, dateInput, pSelection, pregressInfos);
     succesModalOpen();
     
+    
   } else {
     alert("please fill all of the fields !");
-    showMainModel()
+    showMainModel();
     
   }
   addDesc.value = "";
@@ -90,6 +100,7 @@ function addTask(array) {
   array.forEach((task_object, index) => {
     
     let div = document.createElement("div");
+
     div.className = "task-item";
     div.style.paddingTop = "16px";
     div.style.paddingLeft = "16px";
@@ -102,7 +113,7 @@ function addTask(array) {
     title.style.fontWeight = "600";
 
     let description = document.createElement("p");
-    description.innerText = task_object.desc;
+    description.innerText = task_object.desc;0
 
     //description style
     description.style.paddingTop = "16px";
@@ -129,7 +140,7 @@ function addTask(array) {
     let editButton = document.createElement("button");
     editButton.setAttribute("id","edit-btn")
     
-    editButton.innerHTML = "Edit";
+    editButton.innerText = "Edit";
     
 
     // style edit button
@@ -144,6 +155,7 @@ function addTask(array) {
     //delete 
     let deleteButton = document.createElement("button");
     deleteButton.innerText = "Delete";
+    
 
     deleteButton.addEventListener("click", () => {
       
@@ -151,7 +163,9 @@ function addTask(array) {
 
       const isConfirmed = confirm("Confirm Delete?");
       if (index > -1 && isConfirmed) {
+
         
+
         array.splice(index, 1);
         addTask(array);
 
