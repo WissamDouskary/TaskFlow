@@ -37,6 +37,27 @@ body {
   font-weight: 600;
 }
 
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1; 
+  }
+}
+
+#mainmodal {
+  display: none;
+  animation: fadeIn .8s; 
+}
+
+#modal {
+  display: none;
+  animation: fadeIn .8s; 
+}
+
+
+
 
 
 @media (max-width: 1496px) {
