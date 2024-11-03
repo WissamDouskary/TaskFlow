@@ -4,13 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+
+    <meta name="description" content="TaskFlow, the perfect task management app crafted to enhance your productivity. Easily organize your tasks, prioritize your goals, and manage deadlines with simplicity. Begin your path to greater efficiency now!">
+
+    
+    <meta name="keywords" content="task management, productivity app, to-do list, organize tasks, deadline management, efficient tasking">
+
+    
+    <meta name="author" content="Your Name or Company Name">
     <script src="https://cdn.tailwindcss.com"></script>
 
     <title>TaskFlow</title>
   </head>
   <body>
     <header>
-    <div class="flex justify-between items-center m-10 pb-24">
+    <div class="flex justify-between items-center m-10 pb-12">
         <a href="index.html"><img width="150" src="img/TaskFlow-removebg-preview.png" alt="LOGO"></a>
         <!-- <a href="index.html"><p class="text-l font-bold hover:underline">ToDo List</p></a> -->
         <label for="modal-toggle" class="bg-blue-500 w-36 p-3 text-center rounded-2xl hover:text-white hover:bg-blue-700 duration-300 h-15 cursor-pointer" 
@@ -186,6 +194,19 @@
       </div>
   </div>
 
+
+<div id="succesModal" class="hidden fixed inset-0 justify-center items-center bg-black bg-opacity-50">
+  <div id="task-succes" class="border max-w-96 h-40 bg-white rounded-xl">
+    <div class="p-4">
+    <p class="font-bold ">Task Added Succes</p>
+    <p>Task added succes , You can close this page</p>
+    
+    <button id="closeBtn" class="flex justify-end items-end bg-[#36747d] p-2 px-6 rounded-md mt-9">Close</button>
+    
+  </div>
+  </div>
+</div>
+
   <footer class="pt-10 bg-[#5042c9] mt-40  rounded-t-2xl">
     <div class="flex justify-around gap-56">
 
@@ -207,7 +228,7 @@
     </ul>
     
     </div>
-  <h2 class="text-center pt-20 pb-10">© 2023 TaskFlow™. All Rights Reserved.</h2>
+  <h2 class="text-center pt-20 pb-10">© 2024 TaskFlow™. All Rights Reserved.</h2>
   </footer>
 
     <script src="script.js"></script>

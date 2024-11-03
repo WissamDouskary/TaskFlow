@@ -6,7 +6,10 @@ module.exports = {
       colors: {
         customColor: '#4ca1af',
         hoverColor : '#36747d',
-      }
+      },
+      maxHeight: {
+        '120': '30rem',
+      },
     },
   },
   plugins: [],
