@@ -14,10 +14,10 @@ let saveChanges = document.getElementById("edit-btn");
 
 let array = [];
 
-let currentEditingIndex = -1;
+let currentEditingIndex = null;
 
 
-
+let succesModal = document.getElementById("succesModal");
 
 
 
@@ -35,11 +35,12 @@ form.addEventListener("submit", function (event) {
     pregressInfos.value !== "status"
   ) {
     add_to_array(taskTitle, addDesc, dateInput, pSelection, pregressInfos);
-    
+    succesModalOpen();
     
   } else {
     alert("please fill all of the fields !");
     showMainModel()
+    
   }
   addDesc.value = "";
   taskTitle.value = "";
@@ -87,6 +88,7 @@ function addTask(array) {
   
 
   array.forEach((task_object, index) => {
+    
     let div = document.createElement("div");
     div.className = "task-item";
     div.style.paddingTop = "16px";
@@ -103,7 +105,8 @@ function addTask(array) {
     description.innerText = task_object.desc;
 
     //description style
-    description.style.paddingtop = "16px";
+    description.style.paddingTop = "16px";
+    description.style.paddingBottom = "16px"
 
     let date = document.createElement("span");
     date.innerText = task_object.date;
@@ -206,14 +209,9 @@ function hideMainModel(){
 
 function show_model(index) {
     
-  
-
   currentEditingIndex = index; 
   document.getElementById('modal').style.display = "flex";
   
-  
-  
-
   if (currentEditingIndex > -1) {
 
     document.getElementById("edit-task-title").value = array[currentEditingIndex].title;
@@ -259,6 +257,13 @@ function show_model(index) {
   });
   }
 
+  document.getElementById("closeBtn").addEventListener("click", function(){
+    succesModal.style.display = "none"
+  })
+  
+  function succesModalOpen(){
+    succesModal.style.display = "flex"
+  }
   
 
 
